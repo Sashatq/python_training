@@ -21,18 +21,20 @@ class test_add_contact(unittest.TestCase):
         wd = self.wd
         self.login(wd, username="admin", password="secret")
         self.add_new_contact(wd)
-        self.fill_form(wd, Contact(name="Alex", midname="Piter", lastname="Pop", nick="DVP", title="Sec", company="IBM", address_main="Moscow, mihaylov str 11", home_tel="+74655556612",
-                       mobile_tel="+79994561111", work_tel="+74995552312", fax="258963147", mail1="asd@mail.ru", mail2="asd@mail.com", mail3="asd@mail.net",
-                       home_page="https://home.com/", address_second="Moscow, Pochats str", second_tel="123", notes="TEST"))
+        self.fill_form(wd, Contact(name="Alex", midname="Piter", lastname="Pop", nick="DVP", title="Sec",
+                                   company="IBM", address_main="Moscow, mihaylov str 11",home_tel="+74655556612",
+                                   mobile_tel="+79994561111", work_tel="+74995552312",
+                                   fax="258963147", mail1="asd@mail.ru", mail2="asd@mail.com", mail3="asd@mail.net",
+                                   home_page="https://home.com/", address_second="Moscow, Pochats str",
+                                   second_tel="123", notes="TEST"))
         self.add_birthday(wd)
-        self.add_anniversary(wd)
+        self.add_anniversary(wd, day=10, month=7, year="2000") # day -1
         self.create_contact(wd)
         self.check_contact(wd)
         self.logout(wd)
         self.assertTrue(success)
 
     def login(self, wd, username, password):
-        # Login
         wd.get("http://localhost/addressbook/")
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
@@ -43,7 +45,6 @@ class test_add_contact(unittest.TestCase):
         wd.find_element_by_xpath("//form[@id='LoginForm']/input[3]").click()
 
     def add_new_contact(self, wd):
-        # Init contact creation
         wd.find_element_by_link_text("add new").click()
 
     def fill_form(self, wd, contact):
@@ -69,23 +70,23 @@ class test_add_contact(unittest.TestCase):
         wd.find_element_by_name("phone2").send_keys(contact.second_tel)
         wd.find_element_by_name("notes").send_keys(contact.notes)
 
-    def add_birthday(self, wd):
+    def add_birthday(self, wd, year="1990"):
         if not wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[5]").is_selected():
             wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[5]").click()
         if not wd.find_element_by_xpath("//div[@id='content']/form/select[2]//option[8]").is_selected():
             wd.find_element_by_xpath("//div[@id='content']/form/select[2]//option[8]").click()
         wd.find_element_by_name("byear").click()
         wd.find_element_by_name("byear").clear()
-        wd.find_element_by_name("byear").send_keys("1990")
+        wd.find_element_by_name("byear").send_keys(year)
 
-    def add_anniversary(self, wd):
-        if not wd.find_element_by_xpath("//div[@id='content']/form/select[3]//option[10]").is_selected():
-            wd.find_element_by_xpath("//div[@id='content']/form/select[3]//option[10]").click()
-        if not wd.find_element_by_xpath("//div[@id='content']/form/select[4]//option[11]").is_selected():
-            wd.find_element_by_xpath("//div[@id='content']/form/select[4]//option[11]").click()
+    def add_anniversary(self, wd, day, month, year):
+        list_of_day = wd.find_elements_by_xpath("//div[@id='content']/form/select[3]//option")
+        list_of_day[day].click()
+        list_of_month = wd.find_elements_by_xpath("//div[@id='content']/form/select[4]//option")
+        list_of_month[month].click()
         wd.find_element_by_name("ayear").click()
         wd.find_element_by_name("ayear").clear()
-        wd.find_element_by_name("ayear").send_keys("2000")
+        wd.find_element_by_name("ayear").send_keys(year)
 
     def create_contact(self, wd):
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
