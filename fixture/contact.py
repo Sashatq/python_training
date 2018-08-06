@@ -1,14 +1,14 @@
 class ContactHelper:
 
     def __init__(self, app1):
-        self.app1 = app1
+        self.app = app1
 
     def add_new_contact(self):
-        wd = self.app1.wd
+        wd = self.app.wd
         wd.find_element_by_link_text("add new").click()
 
     def fill_form(self, contact):
-        wd = self.app1.wd
+        wd = self.app.wd
         self.add_new_contact()
         # General info
         wd.find_element_by_name("firstname").send_keys(contact.name)
@@ -33,7 +33,7 @@ class ContactHelper:
         wd.find_element_by_name("notes").send_keys(contact.notes)
 
     def add_birthday(self, year="1990"):
-        wd = self.app1.wd
+        wd = self.app.wd
         self.add_birthday()
         if not wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[5]").is_selected():
             wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[5]").click()
@@ -44,7 +44,7 @@ class ContactHelper:
         wd.find_element_by_name("byear").send_keys(year)
 
     def add_anniversary(self, day, month, year):
-        wd = self.app1.wd
+        wd = self.app.wd
         list_of_day = wd.find_elements_by_xpath("//div[@id='content']/form/select[3]//option")
         list_of_day[day].click()
         list_of_month = wd.find_elements_by_xpath("//div[@id='content']/form/select[4]//option")
@@ -54,6 +54,20 @@ class ContactHelper:
         wd.find_element_by_name("ayear").send_keys(year)
 
     def create_contact(self):
-        wd = self.app1.wd
+        wd = self.app.wd
         self.create_contact()
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+
+
+    def test_edit_first_contact(self):
+        wd = self.app.wd
+        wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img").click()
+        wd.find_element_by_name("firstname").clear()
+        wd.find_element_by_name("firstname").send_keys("EDIT")
+        wd.find_element_by_name("middlename").clear()
+        wd.find_element_by_name("middlename").send_keys("EDIT")
+        wd.find_element_by_name("lastname").clear()
+        wd.find_element_by_name("lastname").send_keys("EDIT")
+        wd.find_element_by_name("nickname").clear()
+        wd.find_element_by_name("nickname").send_keys("EDIT")
+        wd.find_element_by_xpath("//div[@id='content']/form[1]/input[22]").click()
