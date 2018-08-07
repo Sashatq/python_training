@@ -52,6 +52,7 @@ class ContactHelper:
         wd.find_element_by_name("ayear").click()
         wd.find_element_by_name("ayear").clear()
         wd.find_element_by_name("ayear").send_keys(year)
+        wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
 
     def create_contact(self):
         wd = self.app.wd
@@ -71,3 +72,12 @@ class ContactHelper:
         wd.find_element_by_name("nickname").clear()
         wd.find_element_by_name("nickname").send_keys("EDIT")
         wd.find_element_by_xpath("//div[@id='content']/form[1]/input[22]").click()
+
+    def test_delete_first_contact(self):
+        wd = self.app.wd
+        wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[2]/td/input").click()
+        wd.find_element_by_xpath("//input[@value='Delete']").click()
+        wd.switch_to_alert().accept()
+
+
+
