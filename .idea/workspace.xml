@@ -22,22 +22,24 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="81" />
+          <entry key="py" value="83" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="81" />
+          <entry key="Python" value="83" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="3426" />
+          <entry key="dummy" value="6" />
+          <entry key="py" value="3432" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="3426" />
+          <entry key="PLAIN_TEXT" value="6" />
+          <entry key="Python" value="3432" />
         </counts>
       </usages-collector>
     </session>
@@ -54,21 +56,25 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/test_del_group.py">
+        <entry file="file://$PROJECT_DIR$/fixture/contact.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="3" selection-end-column="24" />
+            <state relative-caret-position="400">
+              <caret line="79" column="37" lean-forward="true" selection-start-line="79" selection-start-column="37" selection-end-line="79" selection-end-column="37" />
+              <folding>
+                <marker date="1533630333952" expanded="true" signature="20:21" ph="..." />
+                <marker date="1533630333952" expanded="true" signature="20:26" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/test_edit_first_group.py">
+        <entry file="file://$PROJECT_DIR$/test/test_delete_first_contact.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
               <caret line="3" column="24" lean-forward="true" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
               <folding>
-                <marker date="1533630687514" expanded="true" signature="31:32" ph="..." />
+                <marker date="1533655593348" expanded="true" signature="35:164" ph="..." />
               </folding>
             </state>
           </provider>
@@ -126,6 +132,7 @@
         <option value="$PROJECT_DIR$/fixture/contact.py" />
         <option value="$PROJECT_DIR$/test/test_edit_first_group.py" />
         <option value="$PROJECT_DIR$/fixture/group.py" />
+        <option value="$PROJECT_DIR$/test/test_delete_first_contact.py" />
       </list>
     </option>
   </component>
@@ -201,7 +208,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python tests.pytest in test">
     <configuration name="pytest for test_add_contact.test_test_add_contact" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="python_training" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -301,8 +308,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.pytest in test_delete_first_contact.py" />
         <item itemvalue="Python tests.pytest in test" />
+        <item itemvalue="Python tests.pytest in test_delete_first_contact.py" />
         <item itemvalue="Python tests.pytest for test_edit_first_group.test_edit_first_group" />
         <item itemvalue="Python tests.pytest for test_add_contact.test_test_add_contact" />
         <item itemvalue="Python tests.pytest in test_edit_contact.py" />
@@ -323,18 +330,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="pytest_for_test_add_contact_test_test_add_contact - 2018.08.06 at 19h 12m 47s.xml">
-      <configuration name="pytest for test_add_contact.test_test_add_contact" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_for_test_add_contact_test_test_add_contact - 2018.08.06 at 19h 13m 41s.xml">
-      <configuration name="pytest for test_add_contact.test_test_add_contact" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_test_edit_contact_py - 2018.08.06 at 19h 14m 46s.xml">
-      <configuration name="pytest in test_edit_contact.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_test_delete_contact_py - 2018.08.07 at 11h 21m 58s.xml">
-      <configuration name="pytest in test_delete_contact.py" configurationId="tests" />
-    </history-entry>
     <history-entry file="pytest_in_test_delete_contact_py - 2018.08.07 at 11h 24m 10s.xml">
       <configuration name="pytest in test_delete_contact.py" configurationId="tests" />
     </history-entry>
@@ -353,16 +348,28 @@
     <history-entry file="pytest_for_test_edit_first_group_test_edit_first_group - 2018.08.07 at 11h 36m 06s.xml">
       <configuration name="pytest for test_edit_first_group.test_edit_first_group" configurationId="tests" />
     </history-entry>
+    <history-entry file="pytest_in_test - 2018.08.07 at 18h 23m 26s.xml">
+      <configuration name="pytest in test" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_delete_contact_py - 2018.08.07 at 18h 23m 57s.xml">
+      <configuration name="pytest in test_delete_contact.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_delete_first_contact_py - 2018.08.07 at 18h 25m 53s.xml">
+      <configuration name="pytest in test_delete_first_contact.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_delete_first_contact_py - 2018.08.07 at 18h 26m 38s.xml">
+      <configuration name="pytest in test_delete_first_contact.py" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1548999" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1548999" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.329718" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.329718" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -488,28 +495,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/test_delete_contact.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="22" selection-start-column="22" selection-end-column="22" />
-          <folding>
-            <marker date="1533630333958" expanded="true" signature="35:158" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fixture/contact.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
-          <folding>
-            <marker date="1533630333952" expanded="true" signature="20:21" ph="..." />
-            <marker date="1533630333952" expanded="true" signature="20:26" ph="..." />
-            <marker date="1533630333952" expanded="true" signature="2981:2999" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/test_add_contact.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -552,6 +537,27 @@
           <caret line="3" column="24" lean-forward="true" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
           <folding>
             <marker date="1533630687514" expanded="true" signature="31:32" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fixture/contact.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="79" column="37" lean-forward="true" selection-start-line="79" selection-start-column="37" selection-end-line="79" selection-end-column="37" />
+          <folding>
+            <marker date="1533630333952" expanded="true" signature="20:21" ph="..." />
+            <marker date="1533630333952" expanded="true" signature="20:26" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test_delete_first_contact.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="24" lean-forward="true" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+          <folding>
+            <marker date="1533655593348" expanded="true" signature="35:164" ph="..." />
           </folding>
         </state>
       </provider>

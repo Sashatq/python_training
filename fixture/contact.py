@@ -60,17 +60,17 @@ class ContactHelper:
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
 
 
-    def test_edit_first_contact(self):
+    def test_edit_first_contact(self, nick="EDIT", lastname="EDIT", middlename="EDIT", firstname="EDIT"):
         wd = self.app.wd
         wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img").click()
         wd.find_element_by_name("firstname").clear()
-        wd.find_element_by_name("firstname").send_keys("EDIT")
+        wd.find_element_by_name("firstname").send_keys(firstname)
         wd.find_element_by_name("middlename").clear()
-        wd.find_element_by_name("middlename").send_keys("EDIT")
+        wd.find_element_by_name("middlename").send_keys(middlename)
         wd.find_element_by_name("lastname").clear()
-        wd.find_element_by_name("lastname").send_keys("EDIT")
+        wd.find_element_by_name("lastname").send_keys(lastname)
         wd.find_element_by_name("nickname").clear()
-        wd.find_element_by_name("nickname").send_keys("EDIT")
+        wd.find_element_by_name("nickname").send_keys(nick)
         wd.find_element_by_xpath("//div[@id='content']/form[1]/input[22]").click()
 
     def test_delete_first_contact(self):
