@@ -1,4 +1,9 @@
+from model.group import Group
+
+
 def test_delete_first_group(app):
-    app.session.login(username="admin", password="secret")
+    count_1 = app.group.count()
+    if count_1 == 0:
+        app.group.create(Group(name="name"))
     app.group.delete_first_group()
-    app.session.logout()
+
