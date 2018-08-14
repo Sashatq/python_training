@@ -10,16 +10,16 @@ class ContactHelper:
             return
         wd.find_element_by_link_text("home").click()
 
-    def create(self):
+    def create(self, contact):
         wd = self.app.wd
         self.open_contact_page()
         # init contact creation
         wd.find_element_by_link_text("add new").click()
         # fill form
-        self.fill_form()
+        self.fill_form(contact)
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
 
-    def fill_form(self, wd, contact):
+    def fill_form(self, contact):
         wd = self.app.wd
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
