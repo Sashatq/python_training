@@ -22,6 +22,13 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_element_by_name("selected[]").click()
 
+    def fill_form(self, contact):
+        wd = self.app.wd
+        self.change_field_value("firstname", contact.name)
+        self.change_field_value("middlename", contact.mname)
+        self.change_field_value("lastname", contact.lname)
+        self.change_field_value("nickname", contact.nick)
+
     def create(self, contact):
         wd = self.app.wd
         self.open_contact_page()
@@ -37,13 +44,6 @@ class ContactHelper:
             wd.find_element_by_name(field_name).click()
             wd.find_element_by_name(field_name).clear()
             wd.find_element_by_name(field_name).send_keys(text)
-
-    def fill_form(self, contact):
-        wd = self.app.wd
-        self.change_field_value("firstname", contact.name)
-        self.change_field_value("middlename", contact.mname)
-        self.change_field_value("lastname", contact.lname)
-        self.change_field_value("nickname", contact.nick)
 
     def delete_first_contact(self):
         wd = self.app.wd
