@@ -62,7 +62,7 @@ class GroupHelper:
         wd = self.app.wd
         wd.find_element_by_link_text("group page").click()
 
-    def count(self, ):
+    def count(self):
         wd = self.app.wd
         self.open_groups_page()
         elemets = wd.find_elements_by_css_selector("li > a")
