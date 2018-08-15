@@ -10,6 +10,9 @@ class ContactHelper:
             return
         wd.find_element_by_link_text("home").click()
 
+    def count(self):
+
+
     def create(self, contact):
         wd = self.app.wd
         self.open_contact_page()
@@ -33,4 +36,11 @@ class ContactHelper:
         wd.find_element_by_name("nickname").click()
         wd.find_element_by_name("nickname").clear()
         wd.find_element_by_name("nickname").send_keys(contact.nick)
+
+    def delete_first_contact(self):
+        wd = self.app.wd
+        self.open_contact_page()
+        wd.find_element_by_name("selected[]").click()
+        wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
+        wd.switch_to_alert().accept()
 
