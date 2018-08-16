@@ -13,9 +13,9 @@ class ContactHelper:
     def count(self):
         wd = self.app.wd
         self.open_contact_page()
-        elemets = wd.find_elements_by_css_selector("li > a")
+        elements = wd.find_elements_by_css_selector("li > a")
         contacts = wd.find_elements_by_name("selected[]")
-        len_contact = len(contacts)
+        len_contact = len(contacts) and len(elements)
         return len_contact
 
     def select_first_contact(self):
@@ -23,7 +23,6 @@ class ContactHelper:
         wd.find_element_by_name("selected[]").click()
 
     def fill_form(self, contact):
-        wd = self.app.wd
         self.change_field_value("firstname", contact.name)
         self.change_field_value("middlename", contact.mname)
         self.change_field_value("lastname", contact.lname)
