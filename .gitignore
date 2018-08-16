@@ -103,3 +103,6 @@ venv.bak/
 # mypy
 .mypy_cache/
 .idea/workspace.xml
+.idea/workspace.xml
+.idea/dictionaries/a_vagin.xml
+.idea/workspace.xml
