@@ -10,6 +10,14 @@ class ContactHelper:
             return
         wd.find_element_by_link_text("home").click()
 
+    def count_groups(self):
+        wd = self.app.wd
+        self.open_contact_page()
+        groups = wd.find_elements_by_xpath("//div[@class='right']//select[normalize-space(.)='8 jh']//option[1]") # HERE
+        len_groups = len(groups)
+        return len_groups
+    # не верный метод, доработать метод определения отсутствия групп
+
     def count(self):
         wd = self.app.wd
         self.open_contact_page()
@@ -73,3 +81,14 @@ class ContactHelper:
         self.fill_form(new_group_data)
         # update
         wd.find_element_by_name("update").click()
+
+    def choose_group(self):  # Доработать!!!
+        wd = self.app.wd
+        self.open_contact_page()
+        # select contact
+        self.select_first_contact()
+        # choose first group for contact
+        wd.find_element_by_name("to_group").click()
+        # press add to %group%
+        wd.find_element_by_name("add").click()
+        # look for new contact group

@@ -56,6 +56,24 @@ class ContactHelper:
         wd.find_element_by_name("byear").clear()
         wd.find_element_by_name("byear").send_keys(year)
 
+    def count_groups(self):
+        wd = self.app.wd
+        self.open_contact_page()
+        groups = wd.find_element_by_xpath("//div[@class='right']//select[normalize-space(.)='8 jh']//option[1]")
+        len_groups = len(groups)
+        return len_groups
+
+    def choose_group (self):
+        wd = self.app.wd
+        self.open_contact_page()
+        # select contact
+        self.select_first_contact()
+        # choose first group for contact
+        wd.find_element_by_xpath("//div[@class='right']//select[normalize-space(.)='8 jh']//option[1]").click()
+        # press add to %group%
+        wd.find_element_by_name("add").click()
+        # look for new contact group
+
     def add_anniversary(self, day, month, year):
         wd = self.app.wd
         list_of_day = wd.find_elements_by_xpath("//div[@id='content']/form/select[3]//option")
