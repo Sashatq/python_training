@@ -13,7 +13,7 @@ class ContactHelper:
     def count_groups(self):
         wd = self.app.wd
         self.open_contact_page()
-        groups = wd.find_elements_by_xpath("//div[@class='right']//select[normalize-space(.)='8 jh']//option[1]") # HERE
+        groups = wd.find_elements_by_name("group")
         len_groups = len(groups)
         return len_groups
     # не верный метод, доработать метод определения отсутствия групп
