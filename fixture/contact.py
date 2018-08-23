@@ -1,8 +1,29 @@
 # -*- coding: utf-8 -*-
+from model.contact import Contact
+
+
 class ContactHelper:
 
     def __init__(self, app):
         self.app = app
+
+    contact_cache = None
+
+    def get_contact_list(self):
+        if self.contact_cache is None:
+            wd = self.app.wd
+            self.open_contact_page()
+            self.contacts_cache = []
+            for element in wd.find_elements_by_name("entry"):
+                string = element.find_elements_by_css_selector("td")
+                name = string[2].text
+                lname = string[1].text
+                address = string[3].text
+                email = string[4].text
+                phones = string[5].text
+                id = element.find_element_by_name("selected[]").get_attribute("value")
+                self.contacts_cache.append(Contact(name=name, id=id, lname=lname, address=address, email=email, mobile=phones))
+        return list(self.contacts_cache)
 
     def open_contact_page(self):
         wd = self.app.wd
@@ -23,7 +44,7 @@ class ContactHelper:
         self.open_contact_page()
         elements = wd.find_elements_by_css_selector("li > a")
         contacts = wd.find_elements_by_name("selected[]")
-        len_contact = len(contacts) and len(elements)
+        len_contact = len(contacts)
         return len_contact
 
     def select_first_contact(self):
@@ -57,6 +78,7 @@ class ContactHelper:
         # fill form
         self.fill_form(contact)
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+        self.contact_cache = None
 
     def change_field_value(self, field_name, text):
         wd = self.app.wd
@@ -71,6 +93,7 @@ class ContactHelper:
         self.select_first_contact()
         wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
         wd.switch_to_alert().accept()
+        self.contact_cache = None
 
     def edit_first_contact(self, new_group_data):
         wd = self.app.wd
@@ -81,6 +104,7 @@ class ContactHelper:
         self.fill_form(new_group_data)
         # update
         wd.find_element_by_name("update").click()
+        self.contact_cache = None
 
     def choose_group(self):  # Доработать!!!
         wd = self.app.wd

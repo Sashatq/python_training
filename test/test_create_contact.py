@@ -2,6 +2,10 @@ from model.contact import Contact
 
 
 def test_create_contact(app):
-    app.contact.create(Contact(name="Alex", mname="Peter", lname="Ferguson", nick="DICK", company="IBM",
-                               address="1st app", mobile="+7999123", work="GOOGLE",
-                               fax="7111444", email="asd@gmail.com", notes="smart"))
+    old_contact = app.contact.get_contact_list()
+    contact = Contact(name="ADDADD")
+    app.contact.create(contact)
+    assert len(old_contact) + 1 == app.contact.count()
+    new_contact = app.contact.get_contact_list()
+    old_contact.append(contact)
+    assert sorted(old_contact, key=Contact.id_or_max) == sorted(new_contact, key=Contact.id_or_max)
