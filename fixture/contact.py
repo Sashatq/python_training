@@ -102,10 +102,13 @@ class ContactHelper:
     def delete_first_contact(self):
         self.delete_contact_by_index(0)
 
+    def modify_first_contact(self):
+        self.edit_first_contact_by_index(0)
 
-    def edit_first_contact(self, new_group_data):
+    def edit_first_contact_by_index(self, index, new_group_data):
         wd = self.app.wd
         self.open_contact_page()
+        self.select_contact_by_index(index)
         # open modify page
         wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img").click()
         # fill form
