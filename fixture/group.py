@@ -87,9 +87,8 @@ class GroupHelper:
     def count(self):
         wd = self.app.wd
         self.open_groups_page()
-        elements = wd.find_elements_by_css_selector("li > a")
         groups = wd.find_elements_by_name("selected[]")
-        len_group = len(groups) and len(elements)
+        len_group = len(groups)
         return len_group
 
     def open_groups_page(self):

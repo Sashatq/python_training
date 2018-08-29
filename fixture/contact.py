@@ -21,8 +21,8 @@ class ContactHelper:
                 address = string[3].text
                 email = string[4].text
                 phones = string[5].text
-                id = element.find_element_by_name("selected[]").get_attribute("value")
-                self.contacts_cache.append(Contact(name=name, id=id, lname=lname, address=address, email=email, mobile=phones))
+                id_contact = element.find_element_by_name("selected[]").get_attribute("value")
+                self.contacts_cache.append(Contact(name=name, id_contact=id_contact, lname=lname, address=address, email=email, mobile=phones))
         return list(self.contacts_cache)
 
     def open_contact_page(self):
@@ -42,7 +42,6 @@ class ContactHelper:
     def count(self):
         wd = self.app.wd
         self.open_contact_page()
-        elements = wd.find_elements_by_css_selector("li > a")
         contacts = wd.find_elements_by_name("selected[]")
         len_contact = len(contacts)
         return len_contact
@@ -102,17 +101,18 @@ class ContactHelper:
     def delete_first_contact(self):
         self.delete_contact_by_index(0)
 
-    def modify_first_contact(self):
-        self.edit_first_contact_by_index(0)
+    def modify_first_contact(self, index, contact):
+        self.edit_contact_by_index(index, contact)
 
-    def edit_first_contact_by_index(self, index, new_group_data):
+    def edit_contact_by_index(self, index, contact):
         wd = self.app.wd
         self.open_contact_page()
         self.select_contact_by_index(index)
         # open modify page
-        wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img").click()
+        button = wd.find_elements_by_xpath("//img[@alt='Edit']")
+        button[index].click()
         # fill form
-        self.fill_form(new_group_data)
+        self.fill_form(contact)
         # update
         wd.find_element_by_name("update").click()
         self.contact_cache = None
