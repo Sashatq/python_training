@@ -158,6 +158,7 @@ class ContactHelper:
         self.open_contact_view_by_index(index)
         text = wd.find_element_by_id("content").text
         home = re.search("H: (.*)", text).group(1)
+        pass
         mobile = re.search("M: (.*)", text).group(1)
         work = re.search("W: (.*)", text).group(1)
         phone2 = re.search("P: (.*)", text).group(1)
