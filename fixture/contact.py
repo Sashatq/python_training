@@ -17,11 +17,11 @@ class ContactHelper:
             self.contact_cache = []
             for row in wd.find_elements_by_name("entry"):
                 cells = row.find_elements_by_tag_name("td")
-                name = cells[1].text
-                lname = cells[2].text
+                lname = cells[1].text
+                name = cells[2].text
                 id_contact = cells[0].find_element_by_tag_name("input").get_attribute("value")
                 all_phones = cells[5].text
-                self.contact_cache.append(Contact(name=name, lname=lname, id_contact=id_contact, all_phones_from_home_page=all_phones))
+                self.contact_cache.append(Contact(id_contact=id_contact, lname=lname, name=name, all_phones_from_home_page=all_phones))
         return list(self.contact_cache)
 
     def open_contact_page(self):
@@ -80,6 +80,7 @@ class ContactHelper:
         # fill form
         self.fill_form(contact)
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+        wd.find_element_by_xpath("//a[contains(text(),'home page')]").click()
         self.contact_cache = None
 
     def change_field_value(self, field_name, text):
@@ -158,7 +159,6 @@ class ContactHelper:
         self.open_contact_view_by_index(index)
         text = wd.find_element_by_id("content").text
         home = re.search("H: (.*)", text).group(1)
-        pass
         mobile = re.search("M: (.*)", text).group(1)
         work = re.search("W: (.*)", text).group(1)
         phone2 = re.search("P: (.*)", text).group(1)
