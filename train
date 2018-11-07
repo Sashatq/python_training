@@ -1,0 +1,2 @@
+from telegram.ext import Updater
+updater = Updater(token='786314727:AAGEht4-fRKHkAqNAL9VQPeOeEgZ2yM87cs')
