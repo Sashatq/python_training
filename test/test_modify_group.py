@@ -2,13 +2,13 @@ from model.group import Group
 from random import randrange
 
 
-def test_modify_group_name(app):
+def test_modify_group_name(app, data_groups_stable):
     count_1 = app.group.count()
     if count_1 == 0:
         app.group.create(Group(name="asd", header="asd", footer="asd"))
     old_groups = app.group.get_group_list()
     index = randrange(len(old_groups))
-    group = Group(name="i_modify")
+    group = data_groups_stable
     group.id = old_groups[index].id
     app.group.test_modify_group_by_index(index, group)
     new_groups = app.group.get_group_list()

@@ -1,4 +1,4 @@
-from model.group import Group
+from model.contact import Contact
 import random
 import string
 import os.path
@@ -8,14 +8,14 @@ import sys # достур к опциям
 
 
 try:
-    opts, args = getopt.getopt(sys.argv[1:], "n:f:", ["number of groups", 'file'])  # n=amount, f=file
+    opts, args = getopt.getopt(sys.argv[1:], "n:f:", ["number of groups", 'file']) #n=amount, f=file
 except getopt.GetoptError as err:
     getopt.usage()
-    sys.exit(2)  # регулярное выражение getopt
+    sys.exit(2) # регулярное выражение getopt
 
 
 n = 5
-f = "data/groups.json"
+f = "data/contacts.json"
 
 for o, a in opts: #картежи размерности 2(опции)
     if o == "-n":
@@ -29,10 +29,8 @@ def random_string(prefix, maxlen):
     return prefix + "".join([random.choice(symbols) for i in range(random.randrange(maxlen))])
 
 
-test_data = [Group(name="", header="", footer="")] + [
-    Group(name=random_string("name", 10), header=random_string("header", 20), footer=random_string("footer", 20))
-    for i in range(n)]
-
+test_data = [Contact(lname=random_string("lname", 8), name=random_string("name", 4), work=random_string("workphone", 5))
+             for i in range(5)]
 
 file = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', f)
 
