@@ -13,14 +13,14 @@
     "home": null,
     "homepage": null,
     "id_contact": null,
-    "lname": "lnamePN",
+    "lname": "lname2Go",
     "mname": null,
     "mobile": null,
-    "name": "name7",
+    "name": "nameb",
     "nick": null,
     "notes": null,
     "phone2": null,
-    "work": "workphone"
+    "work": "workphone5"
   },
   {
     "py/object": "model.contact.Contact",
@@ -36,14 +36,14 @@
     "home": null,
     "homepage": null,
     "id_contact": null,
-    "lname": "lname5Y07",
+    "lname": "lnameZk",
     "mname": null,
     "mobile": null,
     "name": "name",
     "nick": null,
     "notes": null,
     "phone2": null,
-    "work": "workphone2"
+    "work": "workphoneK95"
   },
   {
     "py/object": "model.contact.Contact",
@@ -59,14 +59,14 @@
     "home": null,
     "homepage": null,
     "id_contact": null,
-    "lname": "lname7Ho",
+    "lname": "lname82QluB",
     "mname": null,
     "mobile": null,
-    "name": "name2",
+    "name": "name33",
     "nick": null,
     "notes": null,
     "phone2": null,
-    "work": "workphone"
+    "work": "workphone553Q"
   },
   {
     "py/object": "model.contact.Contact",
@@ -82,14 +82,14 @@
     "home": null,
     "homepage": null,
     "id_contact": null,
-    "lname": "lnameW62",
+    "lname": "lnameE7H73",
     "mname": null,
     "mobile": null,
-    "name": "name21",
+    "name": "name73",
     "nick": null,
     "notes": null,
     "phone2": null,
-    "work": "workphonek"
+    "work": "workphoneF"
   },
   {
     "py/object": "model.contact.Contact",
@@ -105,13 +105,13 @@
     "home": null,
     "homepage": null,
     "id_contact": null,
-    "lname": "lname253V16",
+    "lname": "lname5w",
     "mname": null,
     "mobile": null,
-    "name": "name2",
+    "name": "name3",
     "nick": null,
     "notes": null,
     "phone2": null,
-    "work": "workphone7761"
+    "work": "workphone90"
   }
 ]

@@ -17,7 +17,7 @@ except getopt.GetoptError as err:
 n = 5
 f = "data/contacts.json"
 
-for o, a in opts: #картежи размерности 2(опции)
+for o, a in opts:  #  картежи размерности 2(опции)
     if o == "-n":
         n = int(a) #берется значение опции и преобразуется в число? опция n
     elif o == "-f":
@@ -30,7 +30,7 @@ def random_string(prefix, maxlen):
 
 
 test_data = [Contact(lname=random_string("lname", 8), name=random_string("name", 4), work=random_string("workphone", 5))
-             for i in range(5)]
+             for i in range(n)]
 
 file = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', f)
 
