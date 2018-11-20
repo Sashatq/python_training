@@ -24,6 +24,20 @@ class ContactHelper:
                 self.contact_cache.append(Contact(id_contact=id_contact, lname=lname, name=name, all_phones_from_home_page=all_phones))
         return list(self.contact_cache)
 
+    def get_phones_list(self):
+        if self.contact_cache is None:
+            wd = self.app.wd
+            self.open_contact_page()
+            self.contact_cache = []
+            for row in wd.find_elements_by_name("entry"):
+                cells = row.find_elements_by_tag_name("td")
+                lname = cells[1].text
+                name = cells[2].text
+                id_contact = cells[0].find_element_by_tag_name("input").get_attribute("value")
+                work = cells[5].text
+                self.contact_cache.append(Contact(id_contact=id_contact, lname=lname, name=name, work=work))
+        return list(self.contact_cache)
+
     def open_contact_page(self):
         wd = self.app.wd
         if wd.current_url.endswith("./") and len(wd.find_elements_by_name("add")) > 0:
@@ -133,6 +147,18 @@ class ContactHelper:
         # open modify page
         button = wd.find_elements_by_xpath("//img[@alt='Edit']")
         button[index].click()
+        # fill form
+        self.fill_form(contact)
+        # update
+        wd.find_element_by_name("update").click()
+        self.contact_cache = None
+
+    def edit_contact_by_id(self, id, contact):
+        wd = self.app.wd
+        self.open_contact_page()
+        self.select_contact_by_id(id)
+        # open modify page
+        wd.find_element_by_xpath("//img[@alt='Edit']").click()
         # fill form
         self.fill_form(contact)
         # update

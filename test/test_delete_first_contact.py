@@ -11,13 +11,14 @@ def test_delete_first_contact(app, db, check_ui, delete_all):
     app.contact.delete_contact_by_id(contact.id_contact)
     new_contact = db.get_contact_list()
     # time.sleep(2)
-    assert len(old_contact) - 1 == len(new_contact)
+    # assert len(old_contact) - 1 == len(new_contact)
     old_contact.remove(contact)
     assert old_contact == new_contact
     if check_ui:
         assert sorted(new_contact, key=Contact.id_or_max) == sorted(app.contact.get_contact_list(), key=Contact.id_or_max)
     if delete_all:
         app.contact.delete_all()
+    else:
         delete_all = db.get_contact_list()
         assert len(delete_all) == 0
 

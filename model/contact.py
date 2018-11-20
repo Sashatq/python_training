@@ -28,11 +28,11 @@ class Contact:
         self.all_phones_from_view_page = all_phones_from_view_page
 
     def __repr__(self):
-        return "%s:%s:%s" % (self.id_contact, self.lname, self.name)
+        return "%s:%s:%s:%s" % (self.id_contact, self.lname, self.name, self.work)
 
     def __eq__(self, other):
         return (self.id_contact is None or other.id_contact is None or self.id_contact == other.id_contact) \
-               and self.lname == other.lname and self.name == other.name
+               and self.lname == other.lname and self.name == other.name and self.work == other.work
 
     def id_or_max(self):
         if self.id_contact:

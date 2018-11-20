@@ -1,4 +1,5 @@
 from model.group import Group
+from data.groups import test_data
 
 
 class GroupHelper:
@@ -39,6 +40,19 @@ class GroupHelper:
         wd.find_element_by_name("edit").click()
         # fill form
         self.fill_group_form(new_group_data)
+        # submit modify
+        wd.find_element_by_name("update").click()
+        self.return_to_group()
+        self.group_cache = None
+
+    def modify_group_by_id(self, id, group):
+        wd = self.app.wd
+        self.open_groups_page()
+        self.select_group_by_id(id)
+        # open modify form
+        wd.find_element_by_name("edit").click()
+        # fill form
+        self.fill_group_form(group)
         # submit modify
         wd.find_element_by_name("update").click()
         self.return_to_group()

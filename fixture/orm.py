@@ -22,6 +22,7 @@ class ORMFixture:
         id_contact = PrimaryKey(int, column='id')  # набор свойств привязывается к полям в таблице
         name = Optional(str, column='firstname')
         lname = Optional(str, column='lastname')
+        work = Optional(str, column='work')
         deprecated = Optional(str, column='deprecated')
         groups = Set(lambda: ORMFixture.ORMGroup, table="address_in_groups", column="group_id", reverse='contacts', lazy=True)
 
@@ -45,7 +46,7 @@ class ORMFixture:
 
     def convert_contacts_to_model(self, contacts):
         def convert(contact):
-            return Contact(id_contact=str(contact.id_contact), name=contact.name, lname=contact.lname)
+            return Contact(id_contact=str(contact.id_contact), name=contact.name, lname=contact.lname, work=contact.work)
         return list(map(convert, contacts))
 
     @db_session
@@ -62,3 +63,8 @@ class ORMFixture:
         orm_group = list(select(g for g in ORMFixture.ORMGroup if g.id == group.id))[0]  # берем первый элемент из списка
         return self.convert_contacts_to_model(
             select(c for c in ORMFixture.ORMContact if c.deprecated is None and orm_group not in c.groups))
+
+    @db_session
+    def get_phones_list(self, group):
+        return self.convert_contacts_to_model(select(c for c in ORMFixture.ORMContact if c.deprecated is None
+                                                     and c.work is not None))

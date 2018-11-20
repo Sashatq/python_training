@@ -29,14 +29,27 @@ class DbFixture:
         list = []
         cursor = self.connection.cursor()
         try:
-            cursor.execute("select id, firstname, lastname from addressbook where deprecated='0000-00-00 00:00:00'")  # столбец из бд, который заполняется датой при удалении контакта
+            cursor.execute("select id, firstname, lastname, work from addressbook where deprecated='0000-00-00 00:00:00'")  # столбец из бд, который заполняется датой при удалении контакта
             for row in cursor:
-                (id_contact, name, lname) = row  # магия! можно заменить на for row in cursor.fetchall():
-                list.append(Contact(id_contact=str(id_contact), name=name, lname=lname))
+                (id_contact, name, lname, work) = row  # магия! можно заменить на for row in cursor.fetchall():
+                list.append(Contact(id_contact=str(id_contact), name=name, lname=lname, work=work))
         finally:
             cursor.close()
         return list
 
     def destroy(self):
         self.connection.close()
+
+    def get_phones_list(self):
+        list = []
+        cursor = self.connection.cursor()
+        try:
+            cursor.execute("select id, firstname, lastname, work from addressbook where deprecated='0000-00-00 00:00:00'")
+            for row in cursor:
+                (id_contact, name, lname, work) = row
+                list.append(Contact(id_contact=str(id_contact), name=name, lname=lname, work=work))
+        finally:
+            cursor.close()
+        return list
+
 
