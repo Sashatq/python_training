@@ -54,10 +54,16 @@ def check_ui(request):
     return request.config.getoption("--check_ui")
 
 
+@pytest.fixture
+def delete_all(request):
+    return request.config.getoption("--delete_all")
+
+
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="chrome")
     parser.addoption("--target", action="store", default="target.json")
     parser.addoption("--check_ui", action="store_true")
+    parser.addoption("--delete_all", action="store_true")
 
 
 def pytest_generate_tests(metafunc):
