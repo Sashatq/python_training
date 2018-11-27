@@ -1,5 +1,4 @@
 from model.contact import Contact
-import re
 
 
 def test_compare_phones(app, db):

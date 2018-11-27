@@ -52,4 +52,28 @@ class DbFixture:
             cursor.close()
         return list
 
+    def get_contact_in_group(self):
+        list = []
+        cursor = self.connection.cursor()
+        try:
+            cursor.execute("select id from address_in_groups")
+            for row in cursor:
+                (id_contact) = row  # магия! можно заменить на for row in cursor.fetchall():
+                list.append(Contact(id_contact=str(id_contact)))
+        finally:
+            cursor.close()
+        return list
+
+    def get_contact_not_in_group(self):
+        list = []
+        cursor = self.connection.cursor()
+        try:
+            cursor.execute("select id from address_in_groups")
+            for row in cursor:
+                (id_contact) = row  # магия! можно заменить на for row in cursor.fetchall():
+                list.append(Contact(id_contact=str(id_contact)))
+        finally:
+            cursor.close()
+        return list
+
 

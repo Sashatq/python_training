@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from model.contact import Contact
+from selenium.webdriver.support.ui import Select
 import re
 
 
@@ -9,6 +10,13 @@ class ContactHelper:
         self.app = app
 
     contact_cache = None
+
+    def select(self):
+        wd = self.app.wd
+        self.open_contact_page()
+        select = Select(wd.find_element_by_xpath("//select[@name='to_group']"))
+        select.select_by_index(0)
+        pass
 
     def get_contact_list(self):
         if self.contact_cache is None:
@@ -36,6 +44,17 @@ class ContactHelper:
                 id_contact = cells[0].find_element_by_tag_name("input").get_attribute("value")
                 work = cells[5].text
                 self.contact_cache.append(Contact(id_contact=id_contact, lname=lname, name=name, work=work))
+        return list(self.contact_cache)
+
+    def contact_in_group_list(self):
+        if self.contact_cache is None:
+            wd = self.app.wd
+            self.open_contact_page()
+            self.contact_cache = []
+            for row in wd.find_elements_by_name("entry"):
+                cells = row.find_elements_by_tag_name("td")
+                id_contact = cells[0].find_element_by_tag_name("input").get_attribute("value")
+                self.contact_cache.append(Contact(id_contact=id_contact))
         return list(self.contact_cache)
 
     def open_contact_page(self):
@@ -165,16 +184,33 @@ class ContactHelper:
         wd.find_element_by_name("update").click()
         self.contact_cache = None
 
-    def choose_group(self):  # Доработать!!!
+    def add_to_group(self):
         wd = self.app.wd
         self.open_contact_page()
-        # select contact
+        self.select()
         self.select_first_contact()
-        # choose first group for contact
-        wd.find_element_by_name("to_group").click()
-        # press add to %group%
-        wd.find_element_by_name("add").click()
-        # look for new contact group
+        wd.find_element_by_css_selector('input[name="add"]').click()
+        wd.find_element_by_css_selector('i > a').click()
+
+    def select_group(self):
+        wd = self.app.wd
+        self.open_contact_page()
+        select = Select(wd.find_element_by_xpath("//select[@name='group']"))
+        select.select_by_index(2)
+
+    def delete_contact_from_group(self):
+        wd = self.app.wd
+        self.select_first_contact()
+        wd.find_element_by_css_selector('input[name="remove"]').click()
+        wd.find_element_by_css_selector('i > a').click()
+
+    def get_first_group_id(self):
+        wd = self.app.wd
+        self.contact_cache = []
+        for row in wd.find_elements_by_name("to_group"):
+            cells = row.find_elements_by_tag_name("td")
+            id_group = cells[0].find_element_by_tag_name("Option").get_attribute("value")
+        return list(self.contact_cache)
 
     def open_contact_to_edit_by_index(self, index):
         wd = self.app.wd

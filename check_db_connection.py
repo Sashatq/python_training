@@ -7,7 +7,7 @@ db = ORMFixture(host="127.0.0.1", name="addressbook", user="root", password="")
 
 
 try:
-    l = db.get_phones_list(Contact)
+    l = db.get_contact_in_group(Group)
     for item in l:
         print(item)
     print(len(l))
